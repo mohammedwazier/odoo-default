@@ -8,6 +8,8 @@ services:
       - POSTGRES_PASSWORD=odoo17@2023
       - POSTGRES_DB=postgres
     restart: always # run as a service
+    ports:
+      - "25432:5432"
     volumes:
       - ./postgresql:/var/lib/postgresql/data
 
@@ -30,7 +32,7 @@ services:
       #- /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./addons:/mnt/extra-addons
-      - ./extra:/usr/lib/python3/dist-packages/odoo/addons
+      # - ./extra:/usr/lib/python3/dist-packages/odoo/addons
       - ./etc:/etc/odoo
     restart: always # run as a service
 
